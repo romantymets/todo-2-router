@@ -8,7 +8,7 @@ class NawBar extends React.Component {
       <div>
         <nav className="navbar navbar-expand-md navbar-light bg-light">
          <div  className="collapse navbar-collapse">
-          <Link className="nav-linc"  to="/">
+          <Link className="nav-logo"  to="/">
             MyTODØ
           </Link>
          </div>

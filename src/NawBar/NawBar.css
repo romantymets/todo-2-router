@@ -17,7 +17,13 @@
 .nav-item a:hover:after {
   transform: scale(1);
 }
-.nav-linc {
+.nav-logo {
   color: #160a1e;
+  text-decoration: none;
+}
+
+.nav-logo:hover{
+  color: #ccc;
+  text-decoration: none;
 }
 
