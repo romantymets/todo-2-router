@@ -3,12 +3,12 @@ import List from "../List/List";
 
 class Form extends React.Component {
   render() {
-    const { onTextchange } = this.props;
+    const { onTextchange, onAddTodo } = this.props;
     return(
       <div className="container">
         <div className="row justify-content-center">
           <div className="col">
-        <form>
+        <form onSubmit={onAddTodo}>
           <div className="form-group">
               <input
                 onChange={onTextchange}
