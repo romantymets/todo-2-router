@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import NawBar from "./NawBar/NawBar"
 import AboutPage from "./AboutPage/AboutPage";
