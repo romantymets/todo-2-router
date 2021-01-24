@@ -6,7 +6,7 @@ import style from "./List.module.css"
 class List extends React.Component {
 
   onItemClick = (todo) => () => {
-    this.props.history.push(`/todoitem/${todo._id}`)
+    this.props.history.push(`/todoitem${todo._id}`);
   };
 
   render() {

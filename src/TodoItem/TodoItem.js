@@ -1,5 +1,5 @@
 import React from "react"
-import { withRouter } from "react-router-dom"
+import { withRouter } from "react-router-dom";
 import Api from "../Api/Api";
 
 
@@ -8,11 +8,12 @@ class TodoItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todo:undefined,
-    }
-  };
+      todo: undefined,
+    };
+  }
 
   componentDidMount() {
+    console.log(this.props);
     const { match } = this.props;
     const { _id } = match.params;
     Api.get(`/todo/${_id}`)
@@ -38,7 +39,9 @@ class TodoItem extends React.Component {
       <div className="card">
         <h5 className="card-header">Todo</h5>
         <div className="card-body">
-          <h5 className="card-title"> {todo.title} </h5>
+          <h5 className="card-title">
+            <span> {todo.title} </span>
+          </h5>
           <button className="btn btn-primary" onClick={this.onButtonClick}>
             Go back
           </button>

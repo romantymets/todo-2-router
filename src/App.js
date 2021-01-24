@@ -23,7 +23,7 @@ class App  extends React.Component {
                 <Route path="/about">
                 <AboutPage/>
                 </Route>
-                <Route path="/todoitem">
+                <Route  path="/todoitem:_id">
                   <TodoItem/>
                 </Route>
                 <Route exact path="/">
