@@ -9,6 +9,7 @@ import AboutPage from "./AboutPage/AboutPage";
 import HomePage from "./HomePage/HomePage";
 import TodoItem from "./TodoItem/TodoItem";
 import "bootstrap/dist/css/bootstrap.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 

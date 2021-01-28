@@ -1,7 +1,7 @@
 import React from "react"
 import Spiner from "../../../Component/Spiner/Spiner";
 
-class Form extends React.Component {
+class Forma extends React.Component {
   render() {
     const { onTextchange, onAddTodo, createTodoSpiner,inputRef } = this.props;
     return(
@@ -34,4 +34,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form
+export default Forma

@@ -1,8 +1,12 @@
 import React from "react"
 import Api from "../Api/Api";
-import Form from "./components/Form/Form";
+import Forma from "./components/Form/Forma";
 import List from "./components/List/List";
 import Spiner from "../Component/Spiner/Spiner";
+import { Form } from 'react-bootstrap';
+import classNames from "classnames";
+import style from "./TodoConteiner.module.css"
+
 
 const TODOONPAGE = 2;
 
@@ -16,6 +20,8 @@ class TodoConteiner extends React.Component {
       createTodoSpiner: false,
       todoItemsRemoving: false,
       createTodoLoadSpiner:false,
+      label:"Please change the background (  ) ",
+      checked:false,
     };
     this.inputRef = React.createRef();
   };
@@ -115,6 +121,17 @@ class TodoConteiner extends React.Component {
     return todoChecked.length
   };
 
+  onItemBackgroundCheck = (e) => {
+    const checked = e.target.checked;
+    if (checked) {
+      this.setState({label:"Please change the background  (On)"})
+    }
+    else {
+      this.setState({label:"Please change the background  (Off)"})
+    }
+    console.log(e)
+  };
+
   render() {
     const {
       todoItemsRemoving,
@@ -124,11 +141,11 @@ class TodoConteiner extends React.Component {
           } = this.state;
     const inputRef = this.inputRef;
     return (
-      <div className="container">
+      <div className={classNames("container")}>
         <div className="row">
           <div className="col">
             <h1> Add Todo </h1>
-            <Form
+            <Forma
               onTextchange={this.onTextchange}
               onAddTodo={this.onAddTodo}
               createTodoSpiner={createTodoSpiner}
@@ -151,6 +168,17 @@ class TodoConteiner extends React.Component {
           </button>
         </div>
         <br/>
+        <div>
+        <Form>
+          <Form.Check
+            type="switch"
+            id="custom-switch"
+            label= {this.state.label}
+            // checked={}
+            onChange ={(e) => this.onItemBackgroundCheck(e)}
+          />
+        </Form>
+        </div>
         <footer>
           <div>
             <p> AllTodo: {array.length} </p>
