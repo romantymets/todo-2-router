@@ -22,6 +22,7 @@ class TodoConteiner extends React.Component {
       createTodoLoadSpiner:false,
       label:"Please change the background (  ) ",
       checked:false,
+      bagraundStyle: "",
     };
     this.inputRef = React.createRef();
   };
@@ -124,12 +125,17 @@ class TodoConteiner extends React.Component {
   onItemBackgroundCheck = (e) => {
     const checked = e.target.checked;
     if (checked) {
-      this.setState({label:"Please change the background  (On)"})
+      this.setState({
+        bagraundStyle: `${style['container-on']}`,
+        label:"Please change the background  (On)"
+      })
     }
     else {
-      this.setState({label:"Please change the background  (Off)"})
+      this.setState({
+        bagraundStyle: "",
+        label:"Please change the background  (Off)"
+      })
     }
-    console.log(e)
   };
 
   render() {
@@ -137,11 +143,12 @@ class TodoConteiner extends React.Component {
       todoItemsRemoving,
       array,
       createTodoSpiner,
-      createTodoLoadSpiner
+      createTodoLoadSpiner,
+      bagraundStyle
           } = this.state;
     const inputRef = this.inputRef;
     return (
-      <div className={classNames("container")}>
+      <div className={classNames("container", bagraundStyle )}>
         <div className="row">
           <div className="col">
             <h1> Add Todo </h1>
