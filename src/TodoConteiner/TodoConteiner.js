@@ -44,11 +44,11 @@ class TodoConteiner extends React.Component {
 
   loadMore = () => {
     this.setState({ createTodoLoadSpiner: true });
-    Api.get(`/todo?limit=${this.state.array.length + TODOONPAGE}&skip=${this.state.array.length}`)
+    Api.get(`/todo?limit=${TODOONPAGE}&skip=${this.state.array.length}`)
       .then((response) => {
      const { data } = response;
      this.setState({
-       array:[this.state.array, ...data],
+       array: [...this.state.array, ...data],
        createTodoLoadSpiner: false
      })
     })
