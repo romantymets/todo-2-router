@@ -6,33 +6,48 @@ class NawBar extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      click: "collapse navbar-collapse",
-    }
+      isDisplay: false,
+    };
   }
-  onbuttonClick = () => {
-    this.setState({  click: "collapse show navbar-collapse"})
-  };
-  onbuttonClick2 = () => {
-    this.setState({  click: "collapse navbar-collapse"})
-  };
+
+componentDidMount() {
+  document.addEventListener('mousedown', this.handleClickOutside);
+}
+
+componentWillUnmount() {
+  document.removeEventListener('mousedown', this.handleClickOutside);
+}
+
+setWrapperRef = (node) =>  {
+  this.wrapperRef = node;
+};
+
+handleClickOutside = (event) => {
+  if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+    this.setState({ isDisplay: false })
+  }
+};
+
+onButtonClick = () => {
+  const isDisplay = this.state.isDisplay;
+  this.setState({ isDisplay: !isDisplay })
+};
 
   render() {
-    const { click } = this.state;
+    const { isDisplay } = this.state;
     return (
       <div className='container-fluid'>
-        <nav className="navbar navbar-expand-md navbar-light bg-light">
+        <nav className="navbar navbar-expand-md navbar-light bg-light" ref={this.setWrapperRef}>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                   aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
-                  onClick={() => {
-                    this.onbuttonClick();
-                  }
-                  }>
+                  onClick={this.onButtonClick}
+                  >
             <span className="navbar-toggler-icon"></span>
           </button>
           <Link className="nav-logo"  to="/">
             MyTODØ
           </Link>
-          <div className={click} id="navbarNav">
+          <div className={`collapse ${isDisplay ? "show" : ""} navbar-collapse`} id="navbarNav">
             <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
               <div className="nav-item">
                 <Link className="nav-link" to="/">Home</Link>

@@ -8,7 +8,7 @@ import classNames from "classnames";
 import style from "./TodoConteiner.module.css"
 
 
-const TODOONPAGE = 2;
+const TODOONPAGE = 4;
 
 class TodoConteiner extends React.Component {
 
@@ -20,7 +20,7 @@ class TodoConteiner extends React.Component {
       createTodoSpiner: false,
       todoItemsRemoving: false,
       createTodoLoadSpiner:false,
-      label:"Please change the background (  ) ",
+      label:" Please change the background ( off ) ",
       checked:false,
       bagraundStyle: "",
     };
@@ -44,11 +44,11 @@ class TodoConteiner extends React.Component {
 
   loadMore = () => {
     this.setState({ createTodoLoadSpiner: true });
-    Api.get(`/todo?limit=${this.state.array.length + TODOONPAGE}&skip=${this.state.array.length}`)
+    Api.get(`/todo?limit=${TODOONPAGE}&skip=${this.state.array.length}`)
       .then((response) => {
      const { data } = response;
      this.setState({
-       array:[this.state.array, ...data],
+       array:[...this.state.array, ...data],
        createTodoLoadSpiner: false
      })
     })
